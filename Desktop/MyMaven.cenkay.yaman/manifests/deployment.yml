@@ -1,0 +1,30 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: myshuttle 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myshuttle
+  template:
+    metadata:
+      labels:
+        app: myshuttle 
+    spec:
+      containers:
+        - name: myshuttle 
+          image: cenkaycontainerreg.azurecr.io/myshuttle:#{Build.BuildId}#
+          ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: myshuttle
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 80 
+    selector:
+        app: myshuttle
