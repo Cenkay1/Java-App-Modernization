@@ -1,4 +1,4 @@
-apiVersion : apps/v1
+image: cenkayacr.azurecr.io/deneme:#{Build.BuildNumber}#apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: myshuttle 
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: myshuttle 
-          image: cenkaycontainerreg.azurecr.io/myshuttle:#{Build.BuildId}#
+          image: cenkayacr.azurecr.io/deneme:#{Build.BuildNumber}#
           ports:
           - containerPort: 80
 ---
